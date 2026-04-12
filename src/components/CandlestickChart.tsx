@@ -9,7 +9,7 @@ export default function CandlestickChart({ stock }: { stock: string }) {
 
   useEffect(() => {
     const load = async () => {
-      const res = await axios.get(`http://192.168.0.104:5000/api/${stock}`);
+      const res = await axios.get(`http://192.168.0.104:5000/api/${stock}/weekly`);
 
       const candles = res.data;
 
