@@ -15,7 +15,6 @@ export default function CandlestickChart({ stock }: { stock: string }) {
         // Change mode from default 'magnet' to 'normal'.
         // Allows the crosshair to move freely without snapping to datapoints
         mode: CrosshairMode.Normal,
-
         // Vertical crosshair line (showing Date in Label)
         vertLine: {
             color: '#C3BCDB44',
@@ -99,9 +98,9 @@ export default function CandlestickChart({ stock }: { stock: string }) {
     const avgPriceLine = {
         price: avgPrice,
         color: 'white',
-        lineStyle: 1, // LineStyle.Dotted
+        lineStyle: 2, // LineStyle.Dotted
         axisLabelVisible: true,
-        title: 'ave price',
+        title: 'avg price',
     };
     const maxPriceLine = {
         price: maxPrice,
@@ -117,12 +116,12 @@ export default function CandlestickChart({ stock }: { stock: string }) {
   };
   load();
   return () => chart.remove();
-  });
+  }, [stock]);
   
 
   return (
     <div>
-      <div ref={containerRef} style={{ width: "80%", height: 600}} />
+      <div ref={containerRef} style={{ width: 1000, height: 600}} />
     </div>
   );
 }

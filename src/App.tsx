@@ -1,12 +1,12 @@
 import CandlestickChart from './components/CandlestickChart/CandlestickChart'
-import './App.css'
+
+import StockSelector from './components/StockSelector/StockSelector'
 
 function App() {
   
   return (
     <div>
-      <h1>DSE Candlestick Chart</h1>
-      <CandlestickChart stock="ACI" />
+      <StockSelector />
     </div>
   )
 }
