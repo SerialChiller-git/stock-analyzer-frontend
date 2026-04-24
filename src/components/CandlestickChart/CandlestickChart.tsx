@@ -1,7 +1,13 @@
 // CandlestickChart.tsx
 import { useEffect, useRef } from "react";
-import axios from "axios";
 import { CandlestickSeries, ColorType, createChart , CrosshairMode, LineStyle } from 'lightweight-charts';
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+);
+
 
 
 export default function CandlestickChart({ stock }: { stock: string }) {
@@ -68,10 +74,17 @@ export default function CandlestickChart({ stock }: { stock: string }) {
     
 
     const load = async () => {
-      const res = await axios.get(` http://192.168.0.100:5000/api/${stock}/weekly`);
-
-      const candles = res.data;
-
+      const { data, error } = await supabase
+      .from('daily_candles')
+      .select('*')
+      .eq('stock', stock);
+      
+      if(error){
+        console.log(error);
+        return;
+      }
+      const candles = data;
+      console.log(data);
       const formatted = candles.map((c: any) => ({
       time: new Date(c.date).toISOString().split("T")[0],
       open: Number(c.open),
@@ -121,7 +134,7 @@ export default function CandlestickChart({ stock }: { stock: string }) {
 
   return (
     <div>
-      <div ref={containerRef} style={{ width: 1000, height: 600}} />
+      <div ref={containerRef} style={{ width: 1200, height: 600}} />
     </div>
   );
 }

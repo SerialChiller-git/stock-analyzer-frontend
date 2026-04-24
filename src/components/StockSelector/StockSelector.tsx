@@ -34,7 +34,7 @@ export default function StockSelector() {
   );
 
   return (
-    <div style={{ position: "relative", width: 250 }}>
+    <div style={{ position: "absolute", width: 250 }}>
       <input
         value={query}
         placeholder="Search symbol..."
