@@ -77,7 +77,8 @@ export default function CandlestickChart({ stock }: { stock: string }) {
       const { data, error } = await supabase
       .from('daily_candles')
       .select('*')
-      .eq('stock', stock);
+      .eq('stock', stock)
+      .order('date', {ascending: true});
       
       if(error){
         console.log(error);
