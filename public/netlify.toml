@@ -1,0 +1,21 @@
+
+# Basic Netlify configuration for deploying a frontend SPA
+# Adjust `publish` and `command` to match your project's build output and build script.
+
+[build]
+	# Directory to publish (change to "build" or "dist" as needed)
+	publish = "dist"
+	# Build command Netlify will run (change if your project uses a different script)
+	command = "npm run build"
+
+# Redirect all routes to index.html for single-page applications
+[[redirects]]
+	from = "/*"
+	to = "/index.html"
+	status = 200
+
+# Example custom headers (caching, security). Uncomment or edit as needed.
+#[[headers]]
+	# For all files
+	# for = "/*"
+	# - { key = "Cache-Control", value = "max-age=0, must-revalidate" }

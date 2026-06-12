@@ -1,4 +1,3 @@
-// CandlestickChart.tsx
 import { useEffect, useRef } from "react";
 import { CandlestickSeries, ColorType, createChart , CrosshairMode, LineStyle } from 'lightweight-charts';
 import { createClient } from '@supabase/supabase-js';
